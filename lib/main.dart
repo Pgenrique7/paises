@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paises/config/themes/countries_theme.dart';
 import 'package:paises/presentation/provider/countries_provider.dart';
 import 'package:paises/presentation/screens/countries_screen.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CountryProvider()),
       ],
       child: MaterialApp(
+        theme: CountriesTheme(selectedColor: 2).theme(),
         debugShowCheckedModeBanner: false,
         title: 'Country Flag App',
         home:  CountriesScreen(), 

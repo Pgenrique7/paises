@@ -15,7 +15,7 @@ class CountriesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Busca la Bandera de un País'), // Título de la barra de la aplicación.
+        title: const Center(child: Text('Busca la Bandera de un País')), // Título de la barra de la aplicación.
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

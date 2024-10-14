@@ -13,8 +13,9 @@ class CountryDisplay extends StatelessWidget {
     } else if (countryProvider.country != null) {
       return Column(
         children: [
-          Text('País: ${countryProvider.country!.name}'),
+          Text('Capital: ${countryProvider.country!.capital}'),
           Image.network(countryProvider.country!.flagUrl),
+          Text('País: ${countryProvider.country!.name} '),
         ],
       );
     } else if (countryProvider.errorMessage != null) {
