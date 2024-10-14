@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(const MaterialApp(home: CountriesScreen()));
+import 'package:paises/presentation/widget/contries_text_field.dart';
+import 'package:paises/presentation/widget/countries_display.dart';
+import 'package:provider/provider.dart';
+import 'package:paises/presentation/provider/countries_provider.dart';
 
 class CountriesScreen extends StatelessWidget {
-  const CountriesScreen({super.key});
+  final TextEditingController _controller = TextEditingController();
+
+  CountriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final countryProvider = Provider.of<CountryProvider>(context);
+
     return Scaffold(
-        appBar: AppBar(
-          title: const Center(child: Text('Countries API')),
+      appBar: AppBar(
+        title: const Text('Busca la Bandera de un País'), // Título de la barra de la aplicación.
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            // Widget para el campo de texto
+            CountriesTextField(controller: _controller),
+            const SizedBox(height: 16),
+            // Widget para mostrar la bandera o el mensaje de error
+            CountryDisplay(countryProvider: countryProvider),
+          ],
         ),
-        body: const CountriesView(),
+      ),
     );
-  }
-}
-
-class CountriesView extends StatelessWidget {
-  const CountriesView({super.key});
-
-
-  @override
-  Widget build(BuildContext context) {
-    return  SafeArea(
-      child: Column(
-        children: [ 
-          Center(
-            child: Container(
-              child: const Image(image: NetworkImage('https://w7.pngwing.com/pngs/42/302/png-transparent-earth-drawing-earth.png'))
-                ),
-          )
-        ],
-      )
-    );
-
   }
 }
